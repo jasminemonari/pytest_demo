@@ -12,17 +12,17 @@ class Boggle:
 
   def getSolution(self):
     if not self.grid or not self.dictionary: #checking if parameters are empty
-      print('Error: Grid and/or dictionary is empty')
+      raise ValueError("Grid and/or dictionary is empty")
       return []
         
     for elem in self.dictionary: #checks every element if all characters are alphabetic and a string
       if not elem.isalpha() or not isinstance(elem, str):
-        print('Error: Dictionary contains an invalid element')
+        raise ValueError("Dictionary contains an invalid element")
         return []
             
     for row in self.grid: #checks if the matrix is 2D
       if len(row) != len(self.grid[0]):
-        print('Error: Matrix is not 2D')
+        raise ValueError("Matrix is not 2D")
         return []
             
     self.grid = [[item.lower() for item in sublist] for sublist in self.grid] #changes items in the matrix to lowercase
